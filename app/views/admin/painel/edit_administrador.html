@@ -1,0 +1,16 @@
+{% extends 'admin/painel/layout.html' %}
+
+{% block admin %}
+
+
+<form action="/adminAdministradores/update" method="POST" role="form">
+
+    <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" id="" placeholder="Input field">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+
+{% endblock %}

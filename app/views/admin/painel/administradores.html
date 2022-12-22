@@ -1,0 +1,36 @@
+{% extends 'admin/painel/layout.html' %}
+
+{% block admin %}
+
+    <h2>Lista de administradores</h2>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for administrador in administradores %}
+            <tr>
+                <td>{{ administrador.id }}</td>
+                <td>{{ administrador.name }}</td>
+                <td>
+                    <a href="/adminPermissoes/show/{{ administrador.id }}" class="btn btn-success btn-xs">Permissões</a>
+                </td>
+                <td>
+                    <a href="/adminAdministradores/edit/{{ administrador.id }}" class="btn btn-info btn-xs">Edit</a>
+                </td>
+                <td>
+                    <a href="/adminAdministradores/destroy/{{ administrador.id }}" class="btn btn-danger btn-xs">Deletar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'admin/painel/layout.html' %}
+
+{% block admin %}
+
+    <h2>
+        Lista de permissões para {{ administrador.name }}
+        {% if administrador.master == 1 %}
+            <small>Administrador geral</small>
+        {% endif %}
+    </h2>
+
+     {% if administrador.master == 1 %}
+        <p> * Qualquer alteração para esse administrador não vai ter efeito por ele ser geral</p>
+     {% endif %}
+
+    <table class="table table-striped table-hover">
+         <thead>
+             <tr>
+                 <th></th>
+                 <th></th>
+                 <th></th>
+             </tr>
+         </thead>
+         <tbody>
+            {% for key,controller in controllers %}
+             <tr>
+                 <td>{{ key }}</td>
+                 <td>
+                     <button class="btn btn-{{ controller.index }} btn-permission" data-action="index,{{ key }},{{ administrador.id }}">
+                         Início
+                     </button>
+                     <button class="btn btn-{{ controller.show }} btn-permission" data-action="show,{{ key }},{{ administrador.id }}">
+                         Mostrar registro(s)
+                     </button>
+                     <button class="btn btn-{{ controller.edit }} btn-permission" data-action="edit,{{ key }},{{ administrador.id }}">
+                         Editar
+                     </button>
+                     <button class="btn btn-{{ controller.update }} btn-permission" data-action="update,{{ key }},{{ administrador.id }}">
+                         Update
+                     </button>
+                     <button class="btn btn-{{ controller.create }} btn-permission" data-action="create,{{ key }},{{ administrador.id }}">
+                         Criar
+                     </button>
+                     <button class="btn btn-{{ controller.store }} btn-permission" data-action="store,{{ key }},{{ administrador.id }}">
+                         Cadastrar
+                     </button>
+                     <button class="btn btn-{{ controller.destroy }} btn-permission" data-action="destroy,{{ key }},{{ administrador.id }}">
+                         Deletar
+                     </button>
+                 </td>
+             </tr>
+             {% endfor %}
+         </tbody>
+         <tfoot>
+             <tr>
+                 <td><small>Legends</small></td>
+                 <td>
+                     Início - <button class="label label-primary">index</button>
+                     Mostrar registro(s) - <button class="label label-info">show</button>
+                     Editar - <button class="label label-warning">edit</button>
+                     Atualizar - <button class="label label-success">update</button>
+                     Criar - <button class="label label-primary">create</button>
+                     Cadastrar - <button class="label label-info">store</button>
+                     Deletar - <button class="label label-danger">destroy</button>
+                 </td>
+             </tr>
+         </tfoot>
+     </table> 
+
+{% endblock %}

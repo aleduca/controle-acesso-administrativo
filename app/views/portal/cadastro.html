@@ -1,0 +1,29 @@
+{% extends 'portal/layout.html' %} {% block portal %}
+
+{{ flash('cadastro') }}
+<form action="/cadastro/store" method="POST" role="form">
+
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name">
+        {{ flash('name') }}
+    </div>
+    
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" class="form-control" name="email" placeholder="Email">
+        {{ flash('email') }}
+    </div>
+    
+    <div class="form-group">
+        <label for="">Password</label>
+        <input type="text" class="form-control" name="password" placeholder="Password">
+        {{ flash('password') }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+
+
+{% endblock %}
